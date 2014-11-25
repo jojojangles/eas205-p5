@@ -9,12 +9,7 @@ runtime = 10.0;
 tstep = 0.1;
 
 zinit = zeros(2,n); !two rows, n col. row1 - velocity, row2 - position
-for i = 1:(n/2)
-    zinit(2,i) = 2*(i-1)/n;
-end
-for i = (n/2):n
-    zinit(2,i) = 2*()/n
-end
+zinit(2,:) = 2 * [(1:(n/2)) ((n/2):-1:1)]' / n;
 
 for t = 0:tstep:runtime
     
