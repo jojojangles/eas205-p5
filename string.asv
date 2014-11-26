@@ -12,7 +12,7 @@ tstep = 0.1;
 
 tridag = full(gallery('tridiag',20,-1,2,-1));
 y = 2 * [(0:((n-1)/2)) (((n-2)/2):-1:0)]' / n;
-ydot = zeros(n,1);
+ydot = zeros(1,n);
 
 Atl = (-c/m)*eye(n);
 Atr = (k/m)*tridag;
@@ -24,7 +24,7 @@ A = [horzcat(Atl,Atr);horzcat(Abl,Abr)];
 stringplot = plot(y);
 
 for t = 0:tstep:runtime
-    plotme = expm(A*t)*[ydot;y];
+    plotme = expm(t*A)*[y;ydot];
     set(stringplot, 'YData', plotme);
     pause(tstep);
     axis([0 (n+1) -2 2]);
