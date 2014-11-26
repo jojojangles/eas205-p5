@@ -23,8 +23,9 @@ A = [horzcat(Atl,Atr);horzcat(Abl,Abr)];
 
 stringplot = plot(y);
 
-for t = 0:tstep:runtime
-    plotme = expm(A*t)*[ydot;y];
+for t = 1:tstep:runtime
+    evolve = t*expm(A)*[ydot;y];
+    plotme = evolve(1:n);
     set(stringplot, 'YData', plotme);
     pause(tstep);
     axis([0 (n+1) -2 2]);
