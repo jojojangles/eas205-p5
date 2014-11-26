@@ -26,7 +26,6 @@ stringplot = plot(y);
 for t = 1:tstep:runtime
     zt = expm(A*t)*z0;
     zt = max(min(zt,1),-1);
-    z(10)
     z0 = zt;
     plotme = zt(n+1:end);
     set(stringplot, 'YData', zt);
